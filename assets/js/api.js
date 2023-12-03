@@ -1,4 +1,5 @@
 import { renderProducts, renderCarts } from "./render";
+import { orderInfoForm } from "./form";
 
 import axios from "axios";
 
@@ -38,7 +39,6 @@ async function patchCart(patchData) {
       patchData
     );
     cartData = res.data.carts;
-    console.log(cartData);
     renderCarts();
   } catch (error) {
     console.log("patchCart", error.response.data.message);
@@ -91,7 +91,7 @@ async function submitOrder(submitInfo) {
     getCart();
     window.alert("已收到您的預訂資料");
   } catch (error) {
-    console.log("submitOrder", error.response);
+    console.log("submitOrder", error);
   }
 }
 

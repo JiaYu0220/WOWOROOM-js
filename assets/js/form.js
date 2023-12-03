@@ -44,36 +44,7 @@ orderInfoForm.addEventListener("submit", (e) => {
   handleSubmit();
 });
 
-function handleSubmit() {
-  if (cartData.length) {
-    const inputs = orderInfoForm.querySelectorAll("[name]");
-    const errors = validate(orderInfoForm, constraints);
-    if (errors) {
-      inputs.forEach((input) => {
-        writeError(input);
-      });
-    } else {
-      let submitInfo = {
-        data: {
-          user: {
-            name: "",
-            tel: "",
-            email: "",
-            address: "",
-            payment: "",
-          },
-        },
-      };
-      inputs.forEach((input) => {
-        submitInfo.data.user[input.getAttribute("name")] = input.value;
-      });
-      submitOrder(submitInfo);
-    }
-  } else {
-    window.alert("請先選購產品再提交表單");
-  }
-}
-
+// 驗證 input
 function writeError(input) {
   const inputName = input.getAttribute("name");
   const reg = RegExp(`${inputName} `, "gi");
@@ -98,3 +69,41 @@ function writeError(input) {
     }
   }
 }
+
+// 送出表單
+function handleSubmit() {
+  if (cartData.length) {
+    const inputs = orderInfoForm.querySelectorAll("[name]");
+    const errors = validate(orderInfoForm, constraints);
+    // 若有錯
+    if (errors) {
+      inputs.forEach((input) => {
+        writeError(input);
+      });
+    }
+    // 若沒錯就提交
+    else {
+      // 提交格式
+      let submitInfo = {
+        data: {
+          user: {
+            name: "",
+            tel: "",
+            email: "",
+            address: "",
+            payment: "",
+          },
+        },
+      };
+      // 寫入資料
+      inputs.forEach((input) => {
+        submitInfo.data.user[input.getAttribute("name")] = input.value;
+      });
+      submitOrder(submitInfo);
+    }
+  } else {
+    window.alert("請先選購產品再提交表單");
+  }
+}
+
+export { orderInfoForm };
