@@ -13,10 +13,22 @@ orderPageList.addEventListener("click", (e) => {
   if (e.target.classList.contains("discardAllBtn")) {
     e.preventDefault();
     deleteAllOrder();
-  } else if (e.target.hasAttribute("data-id")) {
-    e.preventDefault();
-    let id = e.target.dataset.id;
-    deleteOrder(id);
+  } else if (e.target.closest("[data-id]")) {
+    const id = e.target.closest("[data-id]").dataset.id;
+    if (e.target.classList.contains("delSingleOrder-Btn")) {
+      e.preventDefault();
+      deleteOrder(id);
+    } else if (e.target.closest(".orderStatus")) {
+      e.preventDefault();
+      const putData = {
+        data: {
+          id,
+          paid: e.target.innerText === "已處理" ? false : true,
+        },
+      };
+
+      putOrder(putData);
+    }
   }
 });
 
@@ -55,7 +67,7 @@ async function deleteAllOrder() {
     renderOrders();
     calculateRevenue();
   } catch (error) {
-    console.log("delAllCart", error.response.data.message);
+    console.log("deleteAllOrder", error.response.data.message);
   }
 }
 
@@ -76,6 +88,22 @@ async function deleteOrder(orderId) {
     calculateRevenue();
   } catch (error) {
     console.log("deleteOrder", error.response.data.message);
+  }
+}
+
+// 修改訂單狀態
+async function putOrder(data) {
+  try {
+    const res = await axios.put(`${VITE_SITE}${VITE_PATH_ADMIN}/orders`, data, {
+      headers: {
+        Authorization: VITE_TOKEN,
+      },
+    });
+    ordersData = res.data.orders;
+    console.log(ordersData);
+    renderOrders();
+  } catch (error) {
+    console.log("putOrder", error.response.data.message);
   }
 }
 
