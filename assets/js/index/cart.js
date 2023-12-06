@@ -1,4 +1,4 @@
-import { productWrap, cartTable } from "./config";
+import { productWrap, cartTable } from "../config";
 import { cartData, patchCart, postCart, delAllCart, delCart } from "./api";
 
 // 加入購物車監聽
