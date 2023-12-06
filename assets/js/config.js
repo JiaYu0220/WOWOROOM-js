@@ -1,14 +1,8 @@
-import { getProduct, getCart } from "./api";
 // 產品外層
 const productWrap = document.querySelector(".productWrap");
 // 購物車外層
 const cartTable = document.querySelector(".shoppingCart-table");
-
-init();
-function init() {
-  getProduct();
-  getCart();
-}
+const dateReg = /^(\d{4}-\d{2}-\d{2})/;
 
 // 數字加上 ,
 function numberComma(num) {
@@ -21,4 +15,4 @@ function strToNumber(str) {
   return parseInt(str.replace(/\D/g, ""));
 }
 
-export { productWrap, cartTable, numberComma, strToNumber };
+export { productWrap, cartTable, numberComma, strToNumber, dateReg };

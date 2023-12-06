@@ -1,5 +1,5 @@
 import { cartData } from "./api";
-import { numberComma, strToNumber, productWrap, cartTable } from "./config";
+import { numberComma, strToNumber, productWrap, cartTable } from "../config";
 
 function renderProducts(products) {
   let productHtml = "";

@@ -9,6 +9,12 @@ let productsData = [];
 // 購物車資料
 let cartData = [];
 
+init();
+function init() {
+  getProduct();
+  getCart();
+}
+
 // 獲取產品資料
 async function getProduct() {
   try {
