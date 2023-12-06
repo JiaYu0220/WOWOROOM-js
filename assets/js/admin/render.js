@@ -10,7 +10,7 @@ function renderOrders() {
     order.products.forEach((product) => {
       productHtml += `<p>${product.title} × ${product.quantity}</p>`;
     });
-    orderHtml += `<tr>
+    orderHtml += `<tr data-id=${order.id}>
         <td>${order.id}</td>
         <td>
           <p>${order.user.name}</p>
@@ -31,9 +31,7 @@ function renderOrders() {
           <a href="#">${order.paid ? "已處理" : "未處裡"}</a>
         </td>
         <td>
-          <input type="button" class="delSingleOrder-Btn" value="刪除" data-id=${
-            order.id
-          } />
+          <input type="button" class="delSingleOrder-Btn" value="刪除"/>
         </td>
       </tr>`;
   });
