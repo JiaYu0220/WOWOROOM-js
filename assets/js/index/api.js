@@ -22,7 +22,7 @@ async function getProduct() {
     productsData = res.data.products;
     renderProducts(productsData);
   } catch (error) {
-    console.log("getProduct", error);
+    // console.log("getProduct", error);
   }
 }
 
@@ -33,7 +33,7 @@ async function getCart() {
     cartData = res.data.carts;
     renderCarts();
   } catch (error) {
-    console.log("getCart", error);
+    // console.log("getCart", error);
   }
 }
 
@@ -47,7 +47,7 @@ async function patchCart(patchData) {
     cartData = res.data.carts;
     renderCarts();
   } catch (error) {
-    console.log("patchCart", error.response.data.message);
+    // console.log("patchCart", error.response.data.message);
   }
 }
 
@@ -61,7 +61,7 @@ async function postCart(postCart) {
     cartData = res.data.carts;
     renderCarts();
   } catch (error) {
-    console.log("postCart", error.response.data.message);
+    // console.log("postCart", error.response.data.message);
   }
 }
 
@@ -72,7 +72,7 @@ async function delAllCart() {
     cartData = res.data.carts;
     renderCarts();
   } catch (error) {
-    console.log("delAllCart", error.response.data.message);
+    // console.log("delAllCart", error.response.data.message);
   }
 }
 
@@ -85,7 +85,7 @@ async function delCart(cartId) {
     cartData = res.data.carts;
     renderCarts();
   } catch (error) {
-    console.log("delAllCart", error.response.data.message);
+    // console.log("delAllCart", error.response.data.message);
   }
 }
 
@@ -97,7 +97,7 @@ async function submitOrder(submitInfo) {
     getCart();
     window.alert("已收到您的預訂資料");
   } catch (error) {
-    console.log("submitOrder", error);
+    // console.log("submitOrder", error);
   }
 }
 
