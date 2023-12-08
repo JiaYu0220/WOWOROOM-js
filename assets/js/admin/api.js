@@ -46,11 +46,10 @@ async function getOrder() {
       },
     });
     ordersData = res.data.orders;
-    console.log(ordersData);
     renderOrders();
-    calculateRevenue();
+    calculateRevenue(ordersData);
   } catch (error) {
-    console.log("getOrder", error.response);
+    // console.log("getOrder", error.response);
   }
 }
 
@@ -63,11 +62,10 @@ async function deleteAllOrder() {
       },
     });
     ordersData = res.data.orders;
-    console.log(ordersData);
     renderOrders();
-    calculateRevenue();
+    calculateRevenue(ordersData);
   } catch (error) {
-    console.log("deleteAllOrder", error.response.data.message);
+    // console.log("deleteAllOrder", error.response.data.message);
   }
 }
 
@@ -83,11 +81,10 @@ async function deleteOrder(orderId) {
       }
     );
     ordersData = res.data.orders;
-    console.log(ordersData);
     renderOrders();
-    calculateRevenue();
+    calculateRevenue(ordersData);
   } catch (error) {
-    console.log("deleteOrder", error.response.data.message);
+    // console.log("deleteOrder", error.response.data.message);
   }
 }
 
@@ -100,10 +97,9 @@ async function putOrder(data) {
       },
     });
     ordersData = res.data.orders;
-    console.log(ordersData);
     renderOrders();
   } catch (error) {
-    console.log("putOrder", error.response.data.message);
+    // console.log("putOrder", error.response.data.message);
   }
 }
 
