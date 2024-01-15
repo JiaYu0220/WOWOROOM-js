@@ -28,7 +28,7 @@ function renderOrders() {
             .replace(/-/g, "/")
         }</td>
         <td class="orderStatus">
-          <a href="#">${order.paid ? "已處理" : "未處裡"}</a>
+          <a href="#">${order.paid ? "已處理" : "未處理"}</a>
         </td>
         <td>
           <input type="button" class="delSingleOrder-Btn" value="刪除"/>
